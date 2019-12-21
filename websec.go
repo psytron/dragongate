@@ -59,6 +59,7 @@ func main() {        ///                                                        
 	director := func(req *http.Request) {
 		req.Header.Add("X-Forwarded-Host", req.Host)
 		req.Header.Add("X-Origin-Host", origin.Host)
+		//req.Header.Add("X-Forwarded-For", req.Header.Get("X-Forwarded-For") ) // Forward Real IP?
 		req.URL.Scheme = "http"
 		req.URL.Host = origin.Host
 	}
@@ -145,6 +146,7 @@ func main_proxy_base() {
 	director := func(req *http.Request) {
 		req.Header.Add("X-Forwarded-Host", req.Host)
 		req.Header.Add("X-Origin-Host", origin.Host)
+		//req.Header.Add("X-Forwarded-For", req.Header.Get("X-Forwarded-For") ) // Forward Real IP?
 		req.URL.Scheme = "http"
 		req.URL.Host = origin.Host
 	}
